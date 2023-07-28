@@ -11,9 +11,11 @@ describe('test the payment', function () {
     });
 
     it('should create curpayment', function () {
+        billAmtInput.value = 150;
+        tipAmtInput.value = 30;
         let newPayment = {
-            billAmt: '100',
-            tipAmt: '20',
+            billAmt: '150',
+            tipAmt: '30',
             tipPercent: 20,
         }
         expect(createCurPayment()).toEqual(newPayment);

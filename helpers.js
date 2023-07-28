@@ -4,9 +4,9 @@ function sumPaymentTotal(type) {
   let total = 0;
 
   for (let key in allPayments) {
-    let payment = allPayments[key];
+    let payment = allPayments[ key ];
 
-    total += Number(payment[type]);
+    total += Number(payment[ type ]);
   }
 
   return total;
@@ -21,6 +21,21 @@ function calculateTipPercent(billAmt, tipAmt) {
 function appendTd(tr, value) {
   let newTd = document.createElement('td');
   newTd.innerText = value;
+
+  tr.append(newTd);
+}
+
+function appendDeleteBtn(tr) {
+  let newTd = document.createElement('td');
+  newTd.innerText = 'X';
+
+  newTd.addEventListener('click', function (e) {
+    let deleteEle = e.target.closest('tr');
+    delete allServers[ deleteEle.id ];
+    delete allPayments[ deleteEle.id ];
+    deleteEle.remove();
+    updateServerTable();
+  });
 
   tr.append(newTd);
 }

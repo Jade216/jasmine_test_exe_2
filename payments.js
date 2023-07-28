@@ -19,7 +19,7 @@ function submitPaymentInfo(evt) {
   if (curPayment) {
     paymentId += 1;
 
-    allPayments['payment' + paymentId] = curPayment;
+    allPayments[ 'payment' + paymentId ] = curPayment;
 
     appendPaymentTable(curPayment);
     updateServerTable();
@@ -56,6 +56,8 @@ function appendPaymentTable(curPayment) {
   appendTd(newTr, '$' + curPayment.tipAmt);
   appendTd(newTr, curPayment.tipPercent + '%');
 
+  appendDeleteBtn(newTr);
+
   paymentTbody.append(newTr);
 }
 
@@ -71,8 +73,8 @@ function updateSummary() {
     tipPercentAvg = paymentTotal / Object.keys(allPayments).length;
   }
 
-  summaryTds[0].innerHTML = '$' + sumPaymentTotal('billAmt');
-  summaryTds[1].innerHTML = '$' + sumPaymentTotal('tipAmt');
-  summaryTds[2].innerHTML =  Math.round(tipPercentAvg) + '%';
+  summaryTds[ 0 ].innerHTML = '$' + sumPaymentTotal('billAmt');
+  summaryTds[ 1 ].innerHTML = '$' + sumPaymentTotal('tipAmt');
+  summaryTds[ 2 ].innerHTML = Math.round(tipPercentAvg) + '%';
 }
 
